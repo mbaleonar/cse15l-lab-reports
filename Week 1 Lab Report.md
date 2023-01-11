@@ -25,3 +25,13 @@ First off, for Windows users, install `git` for Windows, which will be necessary
 After that's installed, follow this tutorial to get `git bash` working on Visual Studio Code's terminal.
 
 [Using Bash on Windows in VScode](https://stackoverflow.com/a/50527994)
+
+Now with the necessary preparations out of the way, we have to go back and check the course specific account that you will be logging into!
+
+## Finding Your Course Account and You
+(Honestly this should've been first but whatever)
+
+Head over to this webpage to look up your course-specific account:
+
+https://sdacs.ucsd.edu/~icc/index.php
+
