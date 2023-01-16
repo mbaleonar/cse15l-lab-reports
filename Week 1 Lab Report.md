@@ -1,5 +1,5 @@
 ## CSE 15L Week 1
-#VScode, Remote Connection and Terminal Command tutorial
+# VScode, Remote Connection and Terminal Command tutorial
 ---
 
 ## Visual Studio Code Installation
