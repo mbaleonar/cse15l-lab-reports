@@ -69,20 +69,8 @@ Password:`
 Keep in mind that your password input will be censored while being entered for security reasons, so make sure to carefully type it in!
 
 After you (hopefully the first time) successfully entered your password, there terminal should spit this word vomit out:
-`# Now on remote server
-Last login: Sun Jan  2 14:03:05 2022 from 107-217-10-235.lightspeed.sndgca.sbcglobal.net
-quota: No filesystem specified.
-Hello cs15lwi23zz, you are currently logged into ieng6-203.ucsd.edu
 
-You are using 0% CPU on this system
-
-Cluster Status 
-Hostname     Time    #Users  Load  Averages  
-ieng6-201   23:25:01   0  0.08,  0.17,  0.11
-ieng6-202   23:25:01   1  0.09,  0.15,  0.11
-ieng6-203   23:25:01   1  0.08,  0.15,  0.11
-
-Sun Jan 02, 2022 11:28pm - Prepping cs15lwi23`
+![image](https://user-images.githubusercontent.com/122484639/212767178-407f4bc7-3d15-4476-b803-212c05d13185.png)
 
 When that shows up, that means you're connected to a computer in the CSE basement and subsequently any commands you run on your device will also run on that remote computer! As an added note, *client* refers to your personal computer and the *server* is the remote computer hooked up in the CSE building.
 
@@ -102,7 +90,7 @@ Try out these commands:
 
 For example, `ls <directory>` should look like such:
 
-![image](https://user-images.githubusercontent.com/122484639/212766880-b6889484-6c85-448d-a1e0-fdcad3d44f65.png)
+![image](https://user-images.githubusercontent.com/122484639/212766978-263aed71-fef5-4bfb-b293-94c11219df8b.png)
 
 
 If you're working with a group, reach out and compare your commands to see if they're working properly. Have fun with it and just mess around to see what happens with the commands.
