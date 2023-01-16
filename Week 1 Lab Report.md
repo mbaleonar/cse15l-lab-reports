@@ -13,6 +13,20 @@ After going through the install progress, you should be able to get to a window 
 
 **Reminder**: If for some reason your install does not go through properly, idk, like, look it up on google or smth.
 
+## Finding Your Course Account and You
+
+Head over to this webpage to look up your course-specific account:
+
+https://sdacs.ucsd.edu/~icc/index.php
+
+Once you submit your username and Student ID number, the course account should be right underneath the welcome message under *Additional Accounts*.
+
+If you need help resetting your password or are looking for a more visual guide, go to this link: [[TUTORIAL] How to Reset your Password](https://docs.google.com/document/d/1hs7CyQeh-MdUfM9uv99i8tqfneos6Y8bDU0uhn1wqho/edit).
+
+There's a lot of steps and parts to this, so make sure to follow every little instruction down to the T.
+
+The password reset process takes a while, so give it a few minutes while you finish these two other parts to get you connected.
+
 ## Remote Connection
 Courses in CSE utilize course-specific accounts for posterity, and other jobs in the field also similarly setup like in this tutorial. We'll use VScode's terminal function to remotely connect to a computer over the internet to do our work.
 
@@ -26,12 +40,10 @@ After that's installed, follow this tutorial to get `git bash` working on Visual
 
 [Using Bash on Windows in VScode](https://stackoverflow.com/a/50527994)
 
-Now with the necessary preparations out of the way, we have to go back and check the course specific account that you will be logging into!
+Now with the necessary preparations out of the way, that should be enough time for your password to be reset if you did so, and to move onwards with the rest of the tutorial.
 
-## Finding Your Course Account and You
-(Honestly this should've been first but whatever)
+Head over to VisualStudioCode and create a Terminal session (On Windows that's Ctrl + \` and on Mac that is Cmd + \`) and copy this command. Your own command will look similar, but replace the `xx` with your own personal code.
 
-Head over to this webpage to look up your course-specific account:
+`$ ssh cs15lwi23zz@ieng6.ucsd.edu`
 
-https://sdacs.ucsd.edu/~icc/index.php
 
