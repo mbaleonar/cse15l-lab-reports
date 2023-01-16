@@ -6,6 +6,7 @@
 (If you have VScode already installed, just kindly ignore this section and go onto the next step for remote connection)
 First off, go to the Visual Studio Code website at (https://code.visualstudio.com/) and (at least in the Lord's year of 2023), the download link should be right in the middle of your webpage on a button colored with a stunning navy blue hue.
 ![image](https://user-images.githubusercontent.com/122484639/211910251-0bf495fe-182e-4448-8e0e-ff1bea9e5963.png)
+
 If your operating system is anything other than Windows, there is a dropdown arrow to the right of the icon where you can select a macOS (for Macs) or Linux installation. (Unless you know you need it, keep with the Stable build of VScode).
 
 After going through the install progress, you should be able to get to a window with this layout (The default settings may very depending on any settings you mess around or any default system settings):
