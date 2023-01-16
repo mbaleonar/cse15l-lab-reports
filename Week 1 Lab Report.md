@@ -100,6 +100,11 @@ Try out these commands:
 * `cp /home/linux/ieng6/cs15lwi23/public/hello.txt ~/`
 * `cat /home/linux/ieng6/cs15lwi23/public/hello.txt`
 
+For example, `ls <directory>` should look like such:
+
+![image](https://user-images.githubusercontent.com/122484639/212766880-b6889484-6c85-448d-a1e0-fdcad3d44f65.png)
+
+
 If you're working with a group, reach out and compare your commands to see if they're working properly. Have fun with it and just mess around to see what happens with the commands.
 
 Last Tip: When you're finished with your `ssh` session, use:
