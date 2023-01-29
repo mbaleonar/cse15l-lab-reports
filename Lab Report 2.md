@@ -118,6 +118,7 @@ For `testReverseInPlace`, placing a palindrome as the input does not induce a fa
     }
     
 and here is the JUnit test result:
+
 ![image](https://user-images.githubusercontent.com/122484639/215362291-98491978-9363-4aa1-b74c-9efb80314022.png)
 
 For `testReversed`, the non-failure-inducing input is any length array with only zeroes as the values.
@@ -137,19 +138,19 @@ The symptom for Reversed was an error message claiming the first element was exp
 
 The code after the fixes are as such:
 
-    @Test 
-    public void testReverseInPlaceTwo() {
-        int[] input1 = {3,27,99,740,100,6,15,5,12};
-        ArrayExamples.reverseInPlace(input1);
-        assertArrayEquals(new int[]{12,5,15,6,100,740,99,27,3}, input1);
+    static void reverseInPlace(int[] arr) {
+        for(int i = 0; i < arr.length/2; i += 1) {
+          int oldVal = arr[i];
+          arr[i] = arr[arr.length - i - 1];
+          arr[arr.length-i-1] = oldVal;
+        }
     }
-    
-and
-
-    @Test
-    public void testReversedTwo() {
-        int[] input1 = {3,27,99,740,100,6,15};
-        assertArrayEquals(new int[]{15,6,100,740,99,27,3}, ArrayExamples.reversed(input1));
+    static int[] reversed(int[] arr) {
+        int[] newArray = new int[arr.length];
+        for(int i = 0; i < arr.length; i += 1) {
+          newArray[i] = arr[arr.length - i - 1];
+        }
+    return newArray;
     }
 
 
