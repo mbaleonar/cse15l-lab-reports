@@ -59,8 +59,10 @@ Here are two instances of using `/add-message`,  with both the VSC and the web-b
 >![image](https://user-images.githubusercontent.com/122484639/215359952-5ce1e7ce-48bf-4e85-ac5a-1cfe57ffcdee.png)
 >
 >The methods of my code are called handleRequest, which solely handles a url request created at the specified port number (.
+>
 >The relevant argument of this method is scanning the url path and see if it contains `/add-message`, which subsequently scans everything past
 >the command `s=` and concatenates it into a `String returnString` value with a `\n` value at the end to make way for subsequent `/add-message` commands.
+>
 >The only value changed is `returnString` in each passthrough.
 
 ># *Test 2*
