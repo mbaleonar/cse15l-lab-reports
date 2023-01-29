@@ -4,16 +4,15 @@
 
 ## Part 1: String Server
 Below is the code for my `StringServer` web server that creates a local webserver and adds and outputs strings aafter a `=` argument:
-``
+
 import java.io.IOException;
 import java.net.URI;
 
+``
 class Handler implements URLHandler {
     // The one bit of state on the server: a number that will be manipulated by
     // various requests.
     String returnString = "";
-
-
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
             return returnString;
@@ -21,11 +20,9 @@ class Handler implements URLHandler {
         else {
             System.out.println("Path: " + url.getPath());
             if (url.getPath().contains("/add-message")) {
-                
                 System.out.println(url.getQuery());
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
-                    
                     for (int i = 1; i < parameters.length; i ++){
                         returnString += parameters[i] +"\n";
                     }
@@ -36,8 +33,8 @@ class Handler implements URLHandler {
         }
         return "404 Not Found!";
     }
-}``
-
+}
+``
 
 
 
