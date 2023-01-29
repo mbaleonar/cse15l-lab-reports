@@ -58,7 +58,7 @@ Here are two instances of using `/add-message`,  with both the VSC and the web-b
 >![image](https://user-images.githubusercontent.com/122484639/215359935-aad0828f-078b-4de3-9d15-843254a26bd2.png)
 >![image](https://user-images.githubusercontent.com/122484639/215359952-5ce1e7ce-48bf-4e85-ac5a-1cfe57ffcdee.png)
 >
->The methods of my code are called handleRequest, which solely handles a url request created at the specified port number (.
+>The methods of my code are called handleRequest, which solely handles a url request created at the specified port number (4567 in this case).
 >
 >The relevant argument of this method is scanning the url path and see if it contains `/add-message`, which subsequently scans everything past
 >the command `s=` and concatenates it into a `String returnString` value with a `\n` value at the end to make way for subsequent `/add-message` commands.
@@ -66,10 +66,12 @@ Here are two instances of using `/add-message`,  with both the VSC and the web-b
 >The only value changed is `returnString` in each passthrough.
 
 ># *Test 2*
->![image](https://user-images.githubusercontent.com/122484639/215360835-2ddfe618-1144-4a3c-b7a5-1cb276af45e0.png)
->![image](https://user-images.githubusercontent.com/122484639/215360848-af1145ea-ccf1-4439-ad76-26a0b78ebb3a.png)
+>![image](https://user-images.githubusercontent.com/122484639/215361029-f06fc5a9-60f3-4278-bee8-45637615315e.png)
+>![image](https://user-images.githubusercontent.com/122484639/215361056-e7e7a12d-997f-471f-bf07-c181a4e3483e.png)
 >
->The methods haven't changed, although I changed, same changes.
+>The methods haven't changed, although I changed the port to (4512) and tested single word add values, strings with multiple spaces and strings with numbers.
+>
+>Another test I tried was also to add another `s=` to see what would happen, and it seems like it simply adds another `\n` into the `returnString` value.
 
 
 
