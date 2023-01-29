@@ -58,6 +58,18 @@ Here are two instances of using `/add-message`,  with both the VSC and the web-b
 >![image](https://user-images.githubusercontent.com/122484639/215359935-aad0828f-078b-4de3-9d15-843254a26bd2.png)
 >![image](https://user-images.githubusercontent.com/122484639/215359952-5ce1e7ce-48bf-4e85-ac5a-1cfe57ffcdee.png)
 >
->In this test,
+>The methods of my code are called handleRequest, which solely handles a url request created at the specified port number (.
+>The relevant argument of this method is scanning the url path and see if it contains `/add-message`, which subsequently scans everything past
+>the command `s=` and concatenates it into a `String returnString` value with a `\n` value at the end to make way for subsequent `/add-message` commands.
+>The only value changed is `returnString` in each passthrough.
+
+># *Test 2*
+>![image](https://user-images.githubusercontent.com/122484639/215360835-2ddfe618-1144-4a3c-b7a5-1cb276af45e0.png)
+>![image](https://user-images.githubusercontent.com/122484639/215360848-af1145ea-ccf1-4439-ad76-26a0b78ebb3a.png)
+>
+>The methods haven't changed, although I changed, same changes.
+
+
+
 
 
