@@ -136,6 +136,23 @@ and here is the JUnit test result:
 The symptom for ReverseInPlace was an error message saying the element past the halfway point was expected to be the next reversed array item, but was instead the item two indices prior.  
 The symptom for Reversed was an error message claiming the first element was expected to be the first reversed item but was instead “zero”.
 
+The original code for `reverseInPlace` and `reversed` are:
+
+    static void reverseInPlace(int[] arr) {
+        for(int i = 0; i < arr.length; i += 1) {
+            arr[i] = arr[arr.length - i - 1];
+        }
+    }
+
+    static int[] reversed(int[] arr) {
+        int[] newArray = new int[arr.length];
+        for(int i = 0; i < arr.length; i += 1) {
+            arr[i] = newArray[arr.length - i - 1];
+            }
+        return arr;
+    }
+
+
 The code after the fixes are as such:
 
     static void reverseInPlace(int[] arr) {
@@ -153,6 +170,7 @@ The code after the fixes are as such:
     return newArray;
     }
 
-
+The way I fixed `reverseInPlace` was halving the for loop to arr.length/2 and introducing a dummy int value that stored the old value and subsequently replaced the value at the opposite end of the array with said old value.  
+The fix for `reversed`'s bug was switching the arr[i] with newArray[i] and newArray[arr.length - i -1] with arr[arr.length-i-1].
 
 
