@@ -72,7 +72,85 @@ Here are two instances of using `/add-message`,  with both the VSC and the web-b
 >The methods haven't changed, although I changed the port to (4512) and tested single word add values, strings with multiple spaces and strings with numbers.
 >
 >Another test I tried was also to add another `s=` to see what would happen, and it seems like it simply adds another `\n` into the `returnString` value.
+---
+## Part 2: Array Method Bugs
 
+From the lab, I went ahead and chose the `ArrayExamples` file to debug. 
+
+The failure-inducing input for `testReverseInPlac`e was any `int[]` array that wasn’t a palindrome, such as in this code:
+
+    @Test
+    public void testReverseInPlace() {
+        int[] input1 = { 3,27,99,740,100,6,15};
+        ArrayExamples.reverseInPlace(input1);
+        assertArrayEquals(new int[]{ 15,6,100,740,99,27,3 }, input1);
+    }
+  
+ with the output as:
+ 
+    arrays first differed at element [4]; expected:[99] but was:[100]
+    at ArrayTests.testReverseInPlaceTwo(ArrayTests.java:16)
+    Caused by: java.lang.AssertionError: expected:[99] but was:[100]
+    ... 31 more
+
+The failure-inducing input for `testReversed` was any array that wasn’t entirely made up of zeroes.
+
+    @Test
+    public void testReversed() {
+        int[] input1 = {3,27,99,740,100,6,15};
+        assertArrayEquals(new int[]{15,6,100,740,99,27,3}, 
+        ArrayExamples.reversed(input1));
+    }
+which outputs:
+
+    arrays first differed at element [0]; expected:[15] but was:[0]
+    at ArrayTests.testReversedTwo(ArrayTests.java:29)
+    Caused by: java.lang.AssertionError: expected:[15] but was:[0]
+    ... 31 more
+
+For `testReverseInPlace`, placing a palindrome as the input does not induce a failure.
+
+    @Test 
+    public void testReverseInPlaceTwo() {
+        int[] input1 = {3,27,100,27,3};
+        ArrayExamples.reverseInPlace(input1);
+        assertArrayEquals(new int[]{3,27,100,27,3}, input1);
+    }
+    
+and here is the JUnit test result:
+![image](https://user-images.githubusercontent.com/122484639/215362291-98491978-9363-4aa1-b74c-9efb80314022.png)
+
+For `testReversed`, the non-failure-inducing input is any length array with only zeroes as the values.
+
+    @Test
+    public void testReversedTwo() {
+        int[] input1 = {0,0,0,0,0};
+        assertArrayEquals(new int[]{0,0,0,0,0}, ArrayExamples.reversed(input1));
+    }
+
+and here is the JUnit test result:
+
+![image](https://user-images.githubusercontent.com/122484639/215362386-76f30322-3c7a-4033-aec7-ec815f13417e.png)
+
+The symptom for ReverseInPlace was an error message saying the element past the halfway point was expected to be the next reversed array item, but was instead the item two indices prior. 
+The symptom for Reversed was an error message claiming the first element was expected to be the first reversed item but was instead “zero”.
+
+The code after the fixes are as such:
+
+    @Test 
+    public void testReverseInPlaceTwo() {
+        int[] input1 = {3,27,99,740,100,6,15,5,12};
+        ArrayExamples.reverseInPlace(input1);
+        assertArrayEquals(new int[]{12,5,15,6,100,740,99,27,3}, input1);
+    }
+    
+and
+
+    @Test
+    public void testReversedTwo() {
+        int[] input1 = {3,27,99,740,100,6,15};
+        assertArrayEquals(new int[]{15,6,100,740,99,27,3}, ArrayExamples.reversed(input1));
+    }
 
 
 
