@@ -81,13 +81,14 @@ If you ever run into any issues during the process, remember to take a step back
 Now go ahead and try some commands like `cd`, `ls`, `pwd`, `mkdir` and `cp` on both your personal computer and the remote computer to get a feel of properly inputting commands in terminal.
 
 Try out these commands:
-* `cd ~`
-* `cd`
-* `ls -lat`
-* `ls -a`
+* `cd ~` "Change directory", which changes the current directory at the specified location ~
+* `ls`, which lists all files and directories, for example:
 * `ls <directory>` where `<directory>` is `/home/linux/ieng6/cs15lwi23/cs15lwi23xxx`where `xxx` is your own login info or someone else's
-* `cp /home/linux/ieng6/cs15lwi23/public/hello.txt ~/`
-* `cat /home/linux/ieng6/cs15lwi23/public/hello.txt`
+* `cp /home/linux/ieng6/cs15lwi23/public/hello.txt ~/`, where "cp" copies files and folders in the specified location.
+* `cat /home/linux/ieng6/cs15lwi23/public/hello.txt`, where "cat" displays the content of a new file.
+* `mkdir <folder name>`, "Make Directory", creates a new directory (folder).
+* `touch  <filename>`, creates a new file at the current working directory.
+* `history <num>` displays the <num> most recently entered commands.
 
 For example, `ls <directory>` should look like such:
 
