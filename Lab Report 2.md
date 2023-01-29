@@ -36,8 +36,7 @@ class Handler implements URLHandler {
         }
         return "404 Not Found!";
     }
-}
-`
+}`
 
 `class StringServer {
     public static void main(String[] args) throws IOException {
@@ -48,8 +47,7 @@ class Handler implements URLHandler {
         int port = Integer.parseInt(args[0]);
         Server.start(port, new Handler());
     }
-}
-`
+}`
 
 
 ![image](https://user-images.githubusercontent.com/122484639/215359935-aad0828f-078b-4de3-9d15-843254a26bd2.png)
