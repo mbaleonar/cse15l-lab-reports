@@ -52,6 +52,7 @@ And to run the server, you would input this into VSC's terminal:
 This is also implied that there is a blackbox `Server.java` file that handles the URL.
 
 Here are two instances of using `/add-message`,  with both the VSC and the web-browser each:
+
 *Test 1*
 ![image](https://user-images.githubusercontent.com/122484639/215359935-aad0828f-078b-4de3-9d15-843254a26bd2.png)
 ![image](https://user-images.githubusercontent.com/122484639/215359952-5ce1e7ce-48bf-4e85-ac5a-1cfe57ffcdee.png)
