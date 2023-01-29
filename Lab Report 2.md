@@ -5,10 +5,8 @@
 ## Part 1: String Server
 Below is the code for my `StringServer` web server that creates a local webserver and adds and outputs strings aafter a `=` argument:
 
-import java.io.IOException;
-import java.net.URI;
-
-
+    import java.io.IOException;
+    import java.net.URI;
     class Handler implements URLHandler {
         // The one bit of state on the server: a number that will be manipulated by
         // various requests.
@@ -46,7 +44,13 @@ import java.net.URI;
         }
     }
 
+And to run the server, you would input this into VSC's terminal:
 
+    javac Server.java StringServer.java
+    java Main [port]
+    //e.g: java Main 8080
+This is also implied that there is a blackbox `Server.java` file that handles the URL.
 
+Here are  two screenshots of using /add-message:
 ![image](https://user-images.githubusercontent.com/122484639/215359935-aad0828f-078b-4de3-9d15-843254a26bd2.png)
 ![image](https://user-images.githubusercontent.com/122484639/215359952-5ce1e7ce-48bf-4e85-ac5a-1cfe57ffcdee.png)
