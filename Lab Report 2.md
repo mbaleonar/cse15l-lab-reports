@@ -2,5 +2,4 @@
 # Servers and Bugs
 ---
 
-## Part 1
-# String Server
+## Part 1: String Server
