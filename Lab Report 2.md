@@ -172,5 +172,8 @@ The code after the fixes are as such:
 
 The way I fixed `reverseInPlace` was halving the for loop to arr.length/2 and introducing a dummy int value that stored the old value and subsequently replaced the value at the opposite end of the array with said old value.  
 The fix for `reversed`'s bug was switching the arr[i] with newArray[i] and newArray[arr.length - i -1] with arr[arr.length-i-1].
+---
+## Part 2: What I Learned
 
+From Labs Week 2 and 3, I learned how to create a webserver and mess around with the syntax of url handling. I never took a class in javascript or other webserver style coding and I mostly handled one-off java programs.
 
