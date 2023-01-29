@@ -133,7 +133,6 @@ and here is the JUnit test result:
 ![image](https://user-images.githubusercontent.com/122484639/215362386-76f30322-3c7a-4033-aec7-ec815f13417e.png)
 
 The symptom for ReverseInPlace was an error message saying the element past the halfway point was expected to be the next reversed array item, but was instead the item two indices prior.  
-
 The symptom for Reversed was an error message claiming the first element was expected to be the first reversed item but was instead “zero”.
 
 The code after the fixes are as such:
