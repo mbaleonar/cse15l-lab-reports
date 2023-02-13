@@ -33,9 +33,10 @@ I was curious to see what would happen when the included highight was included w
 >In 1821, [01;31m[KMexico[m[K declared its independence from Spain. Tension had been simmering for decades, fostered by Spain’s treatment of her New Spanish-born colonists, or criollos (deemed to be second-class citizens compared to those born in the homeland). Her trade laws decreed that everything produced in New Spain must first cross the Atlantic to Spain before being traded with a third country so that the proper taxes and tariffs could be collected. The geography of the northern Yucatán region separated it physically from the rest of New Spain, and fewer colonial landowners settled here than the area around the new capital (now [01;31m[KMexico[m[K City). Furthermore, this isolation led to the development of a strong independent streak for both colonists and indigenous peoples. The Yucatán declared its independence in 1821 but did not join the fledgling country of [01;31m[KMexico[m[K until 1823. In 1840, it changed its mind, and withdrew from the union. This was the catalyst for the oppressed Maya to take up arms against their colonial oppressors.
 
 I ommited a few lines since there was still a lot of text, but as observed, the previously red colored text is nested with grep's own formatting for color, which seems to not translate well into a plain text file. Doesn't seem to be particularly useful, but at the very least it still technically highlights which word was found.
-
 For both of these examples I used the [Linux Manual Page](https://man7.org/linux/man-pages/man1/grep.1.html) to find the implementation of `--color`.
+
 ---
+
 # `-v`
 
 `-v` functions like the inverse of a standard `grep` search, outputting every line that *doesn't* include the searched phrase.</b>
@@ -68,7 +69,9 @@ I was curious to see what would happen when I would add something incredibly vag
 
 The result was as much as I expected, although I didn't include case-sensitivity so the title line survived the mass exodus of the second most used vowel in the english language. Clearly this doesn't have any sort of practical usage, but in a similar vein as the first example, it does help narrow down unwanted searches.  
 For both of these examples I used the [Linux Manual Page](https://man7.org/linux/man-pages/man1/grep.1.html) to find the implementation of `-v`.
+
 ---   
+
 # `-n`
 
 Now, was there a way to help visualize where the lines of text are in the searched file? Yes, there is. With the helpful `-n` command, the outputted search gets prepended with the line number for easy reference. Combined with the `--color` command, this outputs some really useful information at a glance.   
