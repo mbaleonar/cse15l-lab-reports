@@ -25,4 +25,4 @@ The first example I have of using the `--color` exam was the following:
 Grijalva’s stories focused Spanish attention on central Mexico, and in 1519 Hernan Cortés landed in Veracruz, to start an expedition that would end in the conquest of Moctezuma and the Aztec Empire. Though he had begun his campaign without the King’s authority, once news of the treasures captured by Cortés reached Madrid, a royal warrant was dispatched to legitimize the victory and create “New Spain” — the latest Spanish colony. However, it was left to Don Francisco de Montejo, “a gentleman of Seville,” following in the great conquistador’s wake, to take possession of the Yucatán in the name of the Spanish king.
   ...
   
-The `--color` command highlights the 
+  The `--color` command highlights the 
