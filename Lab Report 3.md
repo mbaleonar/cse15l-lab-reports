@@ -66,4 +66,12 @@ I was curious to see what would happen when I would add something incredibly vag
 >
 >
 
-The result was as much as I expected, although since I didn't include case-sensitivity so the header line survived the mass exodus of the second most used vowel in the english language. Clearly this doesn't have any sort of practical usage, but in a similar vein as the first example, it does help narrow down unwanted searches.
+The result was as much as I expected, although I didn't include case-sensitivity so the title line survived the mass exodus of the second most used vowel in the english language. Clearly this doesn't have any sort of practical usage, but in a similar vein as the first example, it does help narrow down unwanted searches.  
+For both of these examples I used the [Linux Manual Page](https://man7.org/linux/man-pages/man1/grep.1.html) to find the implementation of `-v`.
+---   
+# `-n`
+
+Now, was there a way to help visualize where the lines of text are in the searched file? Yes, there is. With the helpful `-n` command, the outputted search gets prepended with the line number for easy reference. Combined with the `--color` command, this outputs some really useful information at a glance.   
+Here's the first example of its usage:   
+
+>
