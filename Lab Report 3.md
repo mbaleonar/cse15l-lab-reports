@@ -2,6 +2,14 @@
 # Researching Commands
 ---
 
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
+
 ## `grep`
 
 For this lab I decided to go with `grep` to research. The four interesting command-line options I chose are as follows:
