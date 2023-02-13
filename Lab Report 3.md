@@ -2,14 +2,6 @@
 # Researching Commands
 ---
 
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
-
 ## `grep`
 
 For this lab I decided to go with `grep` to research. The four interesting command-line options I chose are as follows:
@@ -28,12 +20,6 @@ The first example I have of using the `--color` exam was the following:
 
 `$ grep --color=always "Mexico"  travel_guides/berlitz2/Cancun-History.txt `
 
-`
-  These people’s ancestors arrived in Central America many thousands of years ago. Small bands of Asiatic hunters migrated across the Bering Strait land bridge before 12,000 b.c. and gradually spread southwards through the Americas. During the Archaic period (after 5,200 b.c.), these people settled in what is now modern Mexico. They developed a primitive agriculture, domesticating cattle and cultivating corn, beans, chili peppers, and squash (a pumpkin-like vegetable) in burned clearings in the jungle. Over time, a society developed that was so successful they could devote time to activities other than simple food cultivation. These people, known as the Olmec, are considered to be the first Mesoamerican culture, the one from which all others evolved. They developed a calendar based on a 52-year cycle. They also constructed pyramids for worship.
-Grijalva’s stories focused Spanish attention on central Mexico, and in 1519 Hernan Cortés landed in Veracruz, to start an expedition that would end in the conquest of Moctezuma and the Aztec Empire. Though he had begun his campaign without the King’s authority, once news of the treasures captured by Cortés reached Madrid, a royal warrant was dispatched to legitimize the victory and create “New Spain” — the latest Spanish colony. However, it was left to Don Francisco de Montejo, “a gentleman of Seville,” following in the great conquistador’s wake, to take possession of the Yucatán in the name of the Spanish king.
-  ...`
+![image](https://user-images.githubusercontent.com/122484639/218533290-41afba32-6385-4873-bbc4-82ea243d350b.png)
 
-<p>Hi here is some text <span>this is red</span>.</p>
-
-
-  The `--color` command highlights the 
+The `--color` command highlights the searched text in red for ease of access, so the user doesn't have to scour a particulary long line for the exact text. This is especially usefuly for when looking for a specific usage of a command in a java file or such.
