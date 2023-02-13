@@ -13,7 +13,7 @@ For this lab I decided to go with `grep` to research. The four interesting comma
 
 ---
 
-## `--color`
+## The `--color` Command
 
 I noticed that the `grep` results in the remote server included a color highlight of the serchable word, and I was curious if the option for highlighting was an external addon, and much to my delight I learned that the option was simply a prefixed command for `grep`.
 The first example I have of using the `--color` exam was the following:
@@ -37,7 +37,7 @@ For both of these examples I used the [Linux Manual Page](https://man7.org/linux
 
 ---
 
-# `-v`
+## The `-v` Command
 
 `-v` functions like the inverse of a standard `grep` search, outputting every line that *doesn't* include the searched phrase.</b>
 Here's an example of such a search:
@@ -72,7 +72,7 @@ For both of these examples I used the [Linux Manual Page](https://man7.org/linux
 
 ---   
 
-# `-n`
+## The `-n` Command
 
 Now, was there a way to help visualize where the lines of text are in the searched file? Yes, there is. With the helpful `-n` command, the outputted search gets prepended with the line number for easy reference. Combined with the `--color` command, this outputs some really useful information at a glance.   
 Here's the first example of its usage:   
@@ -88,6 +88,26 @@ I also did an example using `-v` to see if empty lines also get shown with their
 >`$ grep --color=always  -v "people" -n travel_guides/berlitz2/Cancun-History.txt`
 >![image](https://user-images.githubusercontent.com/122484639/218546004-a6c2ad70-e3b9-4f56-bb59-e2446718938f.png)
 
-And yes, it does seem that 
+And yes, it does seem that empty lines get their own personal line number. Very useful to spot where a line would end or not depending on how the text is formatted.   
+For both of these examples I used the [Linux Manual Page](https://man7.org/linux/man-pages/man1/grep.1.html) to find the implementation of `-n`.
 
+---
 
+## The `-C num` Command
+
+Now this command caught my eye with how useful its implementation was. The "num" value sets how far forward or backward in lines the output should be from the resulting search to provide context.   
+To expedite the search, I tried looking up a country name from all the .txt files in written2: 
+
+> `$ grep --color=always "Japan" -n -C 1 grepresults.txt`
+> ![image](https://user-images.githubusercontent.com/122484639/218548087-eb8b284f-b593-4bb8-9445-5d3ea82c68ee.png)
+
+And as advertised, by specifying "1" for `-C`, `grep` showed the results one line forward and backward from the search result, and even provided formatting for more than one result. Interestingly enough the line breaks were colored similarly to `-n`'s line number, so I assume all formatting values share the same green color. With the combination of all other commands that I used, it makes it incredibly easy to see where a searh is in reference to its line position and its neighbors, making it simple to find where that exact file or phrase is. 
+
+Now out of curiosity, I wanted to see what would happen if I used the `-C` command in conjunction with the `-v` command, since in my mind I would assume that `-C`'s task would be overwritten by `-v`'s. Here were the results:
+
+>`$ grep --color=always -v "Japan" -n -C 1 grepresults.txt`
+>![image](https://user-images.githubusercontent.com/122484639/218549430-18179512-1e96-44e3-8a08-f774753e5a1c.png)
+>![image](https://user-images.githubusercontent.com/122484639/218549526-345c7c3d-096f-4e12-938a-5779734dc45f.png)
+
+Funnily enough, the combination of `-v` and `-C`  double-backed into simply outputting every line in the file, exluded search included. I suppose this would be somewhat helpful in showing the entirety of a file and also have the entire context of a searched phrase, but I think there's more efficient ways to go about that.   
+For both of these examples I used the [Linux Manual Page](https://man7.org/linux/man-pages/man1/grep.1.html) to find the implementation of `-C`.
