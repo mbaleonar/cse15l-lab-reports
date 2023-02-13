@@ -47,11 +47,11 @@ Here's an example of such a search:
 
 
 
->A Brief History
+>A Brief History  
 >
 >During the last fifty years, a great deal of research has been undertaken to discover more about the great ancient societies of the Yucatán. Huge sections of their daily lives (and particularly why they came to abandon their cities) are still shrouded in mystery, but great strides have been made in deciphering their hieroglyphs and stelae (inscribed stone pillars). Despite these mysteries, there are few places in the world where the past feels as close as it does in the Yucatán. The thatched huts that appear in 1,000-year-old carvings at Uxmal can be seen today in every roadside village. The stone metates, or grinding dishes, which grace many a kitchen in town or village, are identical to those left as offerings to the rain gods in centuries past. Away from the cities, the people still speak the Mayan tongue, and their religious beliefs still bear the imprint of the ancient rituals of their ancestors. And, perhaps most striking of all, the distinctive hooked nose and sloping forehead of the ancient Maya, whose stony profiles look down on the visitor from the carved walls of their ruined cities, are still reflected in the features of the local people.
 >
->The Maya
+>The Maya  
 >By 1500 b.c. the group that came to be known as the Maya settled in an area which stretched from the Pacific coast to the southern Yucatán, taking in modern-day Guatemala, Belize, the western parts of El Salvador and Honduras, and the Mexican state of Campeche. In the succeeding centuries they migrated into the northern Yucatán — what are now the modern Mexican states of Yucatán, Quintana Roo, and part of Tabasco.
 
 (As previously mentioned I still omitted the rest of the output text). As one can see, it's a little difficult to see if the inverted search worked or not since we have no way to see the relative position of the lines or which lines the omitted word originally was (spoiler alert, we have a solution of that with the next command option). This is still quite useful since there will be times where one would want to search for everything *but* the specified phrase, sort of like prepending a "-" symbol on a google search to narrow down a search.
