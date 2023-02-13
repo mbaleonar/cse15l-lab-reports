@@ -26,7 +26,7 @@ The `--color` command highlights the searched text in red for ease of access, so
 
 I was curious to see what would happen when the included highight was included when exporting the `grep` search into a txt file, and this was the result:
 
->  $ grep --color=always "Mexico"  travel_guides/berlitz2/Cancun-History.txt > grepHighlight.txt
+> ` $ grep --color=always "Mexico"  travel_guides/berlitz2/Cancun-History.txt > grepHighlight.txt`
 
 >These people’s ancestors arrived in Central America many thousands of years ago. Small bands of Asiatic hunters migrated across the Bering Strait land bridge before 12,000 b.c. and gradually spread southwards through the Americas. During the Archaic period (after 5,200 b.c.), these people settled in what is now modern [01;31m[KMexico[m[K. They developed a primitive agriculture, domesticating cattle and cultivating corn, beans, chili peppers, and squash (a pumpkin-like vegetable) in burned clearings in the jungle. Over time, a society developed that was so successful they could devote time to activities other than simple food cultivation. These people, known as the Olmec, are considered to be the first Mesoamerican culture, the one from which all others evolved. They developed a calendar based on a 52-year cycle. They also constructed pyramids for worship.
 >Grijalva’s stories focused Spanish attention on central [01;31m[KMexico[m[K, and in 1519 Hernan Cortés landed in Veracruz, to start an expedition that would end in the conquest of Moctezuma and the Aztec Empire. Though he had begun his campaign without the King’s authority, once news of the treasures captured by Cortés reached Madrid, a royal warrant was dispatched to legitimize the victory and create “New Spain” — the latest Spanish colony. However, it was left to Don Francisco de Montejo, “a gentleman of Seville,” following in the great conquistador’s wake, to take possession of the Yucatán in the name of the Spanish king.
@@ -57,7 +57,7 @@ Here's an example of such a search:
 
 I was curious to see what would happen when I would add something incredibly vague like "a" which has a lot of usage in vocabulary, so I went ahead and did that.
 
-> grep --color=always -v  "a"  travel_guides/berlitz2/Cancun-History.txt  
+>`$ grep --color=always -v  "a"  travel_guides/berlitz2/Cancun-History.txt  `
 >
 >
 >
@@ -77,4 +77,17 @@ For both of these examples I used the [Linux Manual Page](https://man7.org/linux
 Now, was there a way to help visualize where the lines of text are in the searched file? Yes, there is. With the helpful `-n` command, the outputted search gets prepended with the line number for easy reference. Combined with the `--color` command, this outputs some really useful information at a glance.   
 Here's the first example of its usage:   
 
->
+>`$ grep --color=always   "people" -n travel_guides/berlitz2/Cancun-History.txt`
+>![image](https://user-images.githubusercontent.com/122484639/218544385-e2d4aa28-3bd4-4458-8d36-a6542bab1507.png)
+
+
+I changed up the search to `"people"`, but as seen in the other examples there was a paragraph with that word, which seems to have been line 6. The `--color` effect on `-n` seems to be green for the line numbers, which does help to differenciate it from the rest of the text.   
+
+I also did an example using `-v` to see if empty lines also get shown with their line number. Here's the result:   
+
+>`$ grep --color=always  -v "people" -n travel_guides/berlitz2/Cancun-History.txt`
+>![image](https://user-images.githubusercontent.com/122484639/218546004-a6c2ad70-e3b9-4f56-bb59-e2446718938f.png)
+
+And yes, it does seem that 
+
+
