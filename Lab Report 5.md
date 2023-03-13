@@ -1,5 +1,4 @@
 ## CSE 15L Lab Report 5
-# A Look Back
 ---
 
 ## Lab 6
