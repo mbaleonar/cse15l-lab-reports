@@ -21,7 +21,16 @@ The first task I set out to do was remove the `IsMoon` class in TestListExamples
 
 The initial `TestListExamples.java` already has implementation for `merge`, so now I needed to find a way to test for `filter`.  
 To do this end, I looked at the description of `filter` which states:  
-`  // Returns a new list that has all the elements of the input list for which  `
-`  // the StringChecker returns true, and not the elements that return false, in`  
-`  // the same order they appeared in the input list;  `
 
+`  // Returns a new list that has all the elements of the input list for which  `  
+`  // the StringChecker returns true, and not the elements that return false, in  `    
+`  // the same order they appeared in the input list;  `  
+
+So following this statement, that means when "filtering" a list, the new list is simply the elements that are specified to be filtered.  
+Now, taking a look at `TestListExamples`, there's already a `IsMoon` class that utilizes a `checkstring` method, but there isn't a StringChecker interface, so I decided to slap that above the `IsMoon` class:
+
+`
+  interface StringChecker {
+    boolean checkString(String s); 
+}
+`
