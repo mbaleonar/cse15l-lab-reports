@@ -21,15 +21,27 @@ The first task I set out to do was remove the `IsMoon` class in TestListExamples
 
 The initial `TestListExamples.java` already has implementation for `merge`, so now I needed to find a way to test for `filter`.  
 To do this end, I looked at the description of `filter` which states:  
+```
+  // Returns a new list that has all the elements of the input list for which  
+  // the StringChecker returns true, and not the elements that return false, in      
+  // the same order they appeared in the input list;  
+```
 
-`  // Returns a new list that has all the elements of the input list for which  `  
-`  // the StringChecker returns true, and not the elements that return false, in  `    
-`  // the same order they appeared in the input list;  `  
-
-So following this statement, that means when "filtering" a list, the new list is simply the elements that are specified to be filtered.  
+So following this statement, that means when "filtering" a list, the new list is simply the elements that are specified to be filtered, ignoring case.  
 Now, taking a look at `TestListExamples`, there's already a `IsMoon` class that utilizes a `checkstring` method, but there isn't a StringChecker interface, so I decided to slap that above the `IsMoon` class:
-
-`  interface StringChecker {  `  
-`    boolean checkString(String s);  `   
-`}`  
-
+```
+interface StringChecker {   
+  boolean checkString(String s);   
+}  
+```
+Now, for the `filter` test, using the `testMergeRightEnd` test as a basis, I made the following test `filterMoon` for the expected behavior of ListExamples.
+I created a string List `testList` as the base, and  created another List `expected` for what the output array should be after being filtered. Afterwards I made a new List `filtered` using the `filter` method and cmparing the `filtered` list with what's expected as the test.
+```
+  @Test(timeout = 500)
+  public void filterMoon(){
+    List<String> testList = Arrays.asList("This", "moon", "should","moona","work");
+    List<String> expected = Arrays.asList("moon");
+    List<String> filtered = ListExamples.filter(testList, new IsMoon() );
+    assertEquals(expected, filtered);
+  }
+```
