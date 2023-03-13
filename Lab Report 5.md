@@ -6,7 +6,7 @@
 For this lab I decided to go back to Lab 6, primarily because I couldn't go to lab and properly do the task on my lonesome.
 I went ahead and did the lab step-by-step because the implementation also shows up for the later skill demo.
 
-## TestListExamples Implementation
+## TestListExamples & ListExamples Implementation
 
 First thing first, I took a look at the starter code available in [list-examples-grader repo]([https://man7.org/linux/man-pages/man1/grep.1.html](https://github.com/ucsd-cse15l-w23/list-examples-grader), and since one of the weekly quizzes on gradescope also needed this starter code, I had a head start on fixing the bugs in the repo.
 
@@ -45,4 +45,20 @@ I created a string List `testList` as the base, and  created another List `expec
     assertEquals(expected, filtered);
   }
 ```
-Now that there's one test for all the expected methods in the `ListExamples` class, it's time to go back to `ListExamples` and create the `filter` and `merge` methods. 
+Now that there's one test for all the expected methods in the `ListExamples` class, it's time to go back to `ListExamples` and create the `filter` and `merge` methods. Since the whole lab is mostly about grading students' submissions, I simply went ahead and copied the `ListExamples` class from [Corrected List Methods](https://github.com/ucsd-cse15l-f22/list-methods-corrected) to ensure that the tests I run are within expected behavior.
+
+## grade.sh Implementation
+
+Now that I got all the necessary parts finished, it's time to go back and get working on the workflow of the grading script, which is as follows:  
+
+1. Clone the repository of the student submission to a well-known directory name (provided in starter code)
+2. Check that the student code has the correct file submitted. If they didn’t, detect and give helpful feedback about it.
+  - Useful tools here are if and -e/-f. You can use the exit command to quit a bash script early.
+3. Somehow get the student code and your test .java file into the same directory
+  - Useful tools here might be cp and maybe mkdir
+4. Compile your tests and the student’s code from the appropriate directory with the appropriate classpath commands. If the compilation fails, detect and give helpful feedback about it.
+  - Aside from the necessary javac, useful tools here are output redirection and error codes ($?) along with if
+  - This might be a time where you need to turn off set -e. Why?
+ 5.Run the tests and report the grade based on the JUnit output.
+  - Again output redirection will be useful, and also tools like grep could be helpful here
+
