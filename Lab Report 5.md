@@ -45,3 +45,4 @@ I created a string List `testList` as the base, and  created another List `expec
     assertEquals(expected, filtered);
   }
 ```
+Now that there's one test for all the expected methods in the `ListExamples` class, it's time to go back to `ListExamples` and create the `filter` and `merge` methods. 
