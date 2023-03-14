@@ -78,7 +78,56 @@ cp -r lib/ ./grade-zone
 cp TestListExamples.java ./grade-zone
 cd grade-zone
 ```
-Onto step 4, now I have to compile the code and `TestListExamples`, and also compensate for failed compilations. Since I'm running on Windows machine I'll have to make a seperate classpath at least temporarily, dubbed `WINPATH` (slightly altered since I'm accessing the `/lib` directory from one directory back.)
+Onto step 4, now I have to compile the code and `TestListExamples`, and also compensate for failed compilations. Since I'm running on Windows machine I'll have to make a seperate classpath at least temporarily, dubbed `WINPATH` (slightly altered since I'm accessing the `/lib` directory from one directory back.) So for local testing purposes I'll be using `$WINPATH` instead of `$CPATH`
 ```
-WINPATH= ".;..\lib\junit-4.13.2.jar;..\lib\hamcrest-core-1.3.jar"
+WINPATH='".;..\lib\junit-4.13.2.jar;..\lib\hamcrest-core-1.3.jar"' 
+```
+Now, to find the compilation failures from all the java files, I created this line of code:
+```
+javac -cp $CPATH *.java 2> errors.txt
+```
+After doing some research, 2> outputs the standard error, which should also clean up the terminal from a bunch of error messages, and so I created an if statement for an unsuccessful compilation:
+```
+if [ $? = "0" ]
+then
+  java -cp $WINPATH org.junit.runner.JUnitCore TestListExamples > testoutput.txt
+else
+  LINES=$(wc -l errors.txt)
+  ERRORNUM=$(head -n $LINES errors.txt | tail -1)
+  ERROR1st=$(head -n 1 errors.txt | tail -1)
+  echo ""
+  echo "Failure to compile; Total of "$ERRORNUM
+  echo "Potential error: " $ERROR1st
+  exit 1
+fi
+```
+Since I'm looking for the amount of passed tests, I also need to create a .txt file so I went ahead and created a `testoutput.txt` destination to find what tests pass or not. I replaced the `$CPATH` with `$WINPATH` to populate the `errors.txt` file and see what showed up and this was what showed up:
+```
+TestListExamples.java:1: error: package org.junit does not exist
+import static org.junit.Assert.*;
+                       ^
+TestListExamples.java:2: error: package org.junit does not exist
+import org.junit.*;
+^
+TestListExamples.java:15: error: cannot find symbol
+  @Test(timeout = 500)
+   ^
+  symbol:   class Test
+  location: class TestListExamples
+TestListExamples.java:24: error: cannot find symbol
+  @Test(timeout = 500)
+   ^
+  symbol:   class Test
+  location: class TestListExamples
+TestListExamples.java:21: error: cannot find symbol
+    assertEquals(expected, merged);
+    ^
+  symbol:   method assertEquals(List<String>,List<String>)
+  location: class TestListExamples
+TestListExamples.java:29: error: cannot find symbol
+    assertEquals(expected, filtered);
+    ^
+  symbol:   method assertEquals(List<String>,List<String>)
+  location: class TestListExamples
+6 errors
 ```
