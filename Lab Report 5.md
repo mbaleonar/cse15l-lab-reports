@@ -68,7 +68,7 @@ else
   exit 1
 fi
 ```
-Now with step 2 done, step 3 says I have to get the student code and the test.java file into the same directory, so I use mkdir to make a new directory `grade-zone` where I'll copy the `ListExamples.java` file and the `TestListExamples.java` into it.
+Now with step 2 done, step 3 says I have to get the student code and the test.java file into the same directory, so I use mkdir to make a new directory `grade-zone` where I'll copy the `ListExamples.java` file and the `TestListExamples.java` into it. Then I changed the current working directory to grade-zone for the next parts.
 ```
 rm -r grade-zone
 mkdir grade-zone
@@ -76,5 +76,9 @@ mkdir grade-zone
 cp student-submission/ListExamples.java ./grade-zone
 cp -r lib/ ./grade-zone
 cp TestListExamples.java ./grade-zone
+cd grade-zone
 ```
-
+Onto step 4, now I have to compile the code and `TestListExamples`, and also compensate for failed compilations. Since I'm running on Windows machine I'll have to make a seperate classpath at least temporarily, dubbed `WINPATH` (slightly altered since I'm accessing the `/lib` directory from one directory back.)
+```
+WINPATH= ".;..\lib\junit-4.13.2.jar;..\lib\hamcrest-core-1.3.jar"
+```
