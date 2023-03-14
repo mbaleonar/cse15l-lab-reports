@@ -101,7 +101,7 @@ else
   exit 1
 fi
 ```
-Since I'm looking for the amount of passed tests, I also need to create a .txt file so I went ahead and created a `testoutput.txt` destination to find what tests pass or not. I replaced the `$CPATH` with `$WINPATH` to populate the `errors.txt` file and see what showed up and this was what showed up:
+Since I created the `errors.txt` file, I replaced the `$CPATH` with `$WINPATH` to populate the `errors.txt` file and see what showed up and this was what showed up:
 ```
 TestListExamples.java:1: error: package org.junit does not exist
 import static org.junit.Assert.*;
@@ -131,3 +131,6 @@ TestListExamples.java:29: error: cannot find symbol
   location: class TestListExamples
 6 errors
 ```
+I noticed that the last line of the .txt file mentioned the number of errors, and the first line mentions the type of error it had, so I created a value `LINES` that is the number of lines in the .txt files, which is then used in my `ERRORNUM` value which is a string of the last line of the code that mentions the number of errors, and then `ERROR1st` takes the first line. Then I echoed an error message for the number of errors and the potential errors, then exiting the shell.
+
+With the compiling error check done, I went ahead to the meat of the issue with compilation and subsequent grading process. First, I went ahead and ran the grade script with [Buggy Code](https://github.com/ucsd-cse15l-f22/list-methods-lab3) and [Corrected Methods](https://github.com/ucsd-cse15l-f22/list-methods-corrected).
