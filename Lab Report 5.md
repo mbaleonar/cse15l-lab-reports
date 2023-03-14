@@ -86,7 +86,7 @@ Now, to find the compilation failures from all the java files, I created this li
 ```
 javac -cp $CPATH *.java 2> errors.txt
 ```
-After doing some research, 2> outputs the standard error, which should also clean up the terminal from a bunch of error messages, and so I created an if statement for an unsuccessful compilation:
+After doing some research, 2> outputs the standard error, which should also clean up the terminal from a bunch of error messages, and so I created an if statement for an successful compilation:
 ```
 if [ $? = "0" ]
 then
@@ -94,13 +94,14 @@ then
 else
   LINES=$(wc -l errors.txt)
   ERRORNUM=$(head -n $LINES errors.txt | tail -1)
-  ERROR1st=$(head -n 1 errors.txt | tail -1)
   echo ""
   echo "Failure to compile; Total of "$ERRORNUM
-  echo "Potential error: " $ERROR1st
+  echo "Error output was:"
+  cat errors.txt
   exit 1
 fi
 ```
+The first check (when it clears correctly) simply runs the JUnitCore with the test runner, and outputs the tests into a .txt file that I'll use for leter implementation.  
 Since I created the `errors.txt` file, I replaced the `$CPATH` with `$WINPATH` to populate the `errors.txt` file and see what showed up and this was what showed up:
 ```
 TestListExamples.java:1: error: package org.junit does not exist
@@ -131,6 +132,61 @@ TestListExamples.java:29: error: cannot find symbol
   location: class TestListExamples
 6 errors
 ```
-I noticed that the last line of the .txt file mentioned the number of errors, and the first line mentions the type of error it had, so I created a value `LINES` that is the number of lines in the .txt files, which is then used in my `ERRORNUM` value which is a string of the last line of the code that mentions the number of errors, and then `ERROR1st` takes the first line. Then I echoed an error message for the number of errors and the potential errors, then exiting the shell.
+I noticed that the last line of the .txt file mentioned the number of errors, so I created a value `LINES` that is the number of lines in the .txt files, which is then used in my `ERRORNUM` value which is a string of the last line of the code that mentions the number of errors, and then outputted the `errors.txt` file to show the user what went wrong according to VSC, subsequently exiting the grader script.
 
-With the compiling error check done, I went ahead to the meat of the issue with compilation and subsequent grading process. First, I went ahead and ran the grade script with [Buggy Code](https://github.com/ucsd-cse15l-f22/list-methods-lab3) and [Corrected Methods](https://github.com/ucsd-cse15l-f22/list-methods-corrected).
+With the compiling error check done, I went ahead to the meat of the issue with compilation and subsequent grading process. First, I went ahead and ran the grade script with [Buggy Code](https://github.com/ucsd-cse15l-f22/list-methods-lab3) and [Corrected Methods](https://github.com/ucsd-cse15l-f22/list-methods-corrected).  
+The corrected methods outputted this:  
+```
+JUnit version 4.13.2
+..
+Time: 0.008
+
+OK (2 tests)
+
+```
+And the buggy code had this output:
+```
+JUnit version 4.13.2
+..E
+Time: 0.58
+There was 1 failure:
+1) testMergeRightEnd(TestListExamples)
+org.junit.runners.model.TestTimedOutException: test timed out after 500 milliseconds
+	at java.base@17.0.4.1/java.util.Arrays.copyOf(Arrays.java:3512)
+	at java.base@17.0.4.1/java.util.Arrays.copyOf(Arrays.java:3481)
+	at java.base@17.0.4.1/java.util.ArrayList.grow(ArrayList.java:237)
+	at java.base@17.0.4.1/java.util.ArrayList.grow(ArrayList.java:244)
+	at java.base@17.0.4.1/java.util.ArrayList.add(ArrayList.java:454)
+	at java.base@17.0.4.1/java.util.ArrayList.add(ArrayList.java:467)
+	at app//ListExamples.merge(ListExamples.java:42)
+	at app//TestListExamples.testMergeRightEnd(TestListExamples.java:19)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+```
+And judging from the output with failures, the phrase `FAILURES!!!` indicates if there was something wrong with the output, so using that as the baseline for a "correct" file, I created this if statement block:
+```
+FAILURES=`grep -c FAILURES!!! testoutput.txt`
+if [[ $FAILURES -eq 0 ]]
+then
+  RESULT=$(head -n 5 testoutput.txt | tail -1)
+  PASSED=${RESULT:4:1}
+  TOTAL=$PASSED
+else
+  LINES=$(wc -l testoutput.txt)
+  RESULT=$(head -n $LINES testoutput.txt | tail -2)
+  COUNT=${RESULT:25:1}
+  TOTAL=${RESULT:11:1}
+  PASSED=$(expr $TOTAL - $COUNT)
+  echo ""
+  echo "Test output was:"
+  cat testoutput.txt
+fi
+
+echo ""
+echo "Score: $PASSED/$TOTAL"
+echo ""
+```
+The "true" case is if the resulting file has the right methodology for the task, which does not output a `FAILURES!!!` line and only shows the runtime and the number of tests. Knowing that, the last line shows the actual number of tests ran in the 4th position, so I created a value `PASSED` which saves that number as the total number of tests. Since this is a 100% in the eyes of the autograder, `PASSED` is also the total score.  
+For a implementation with errors, however, needs a little bit of 
