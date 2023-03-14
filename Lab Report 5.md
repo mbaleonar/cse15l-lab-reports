@@ -64,7 +64,7 @@ then
     echo 'ListExamples.java found'
 else
   echo 'ListExamples.java not found. Is the filetype named properly?'
-  echo 'Score: 0/4'
+  echo 'Score: 0/2'
   exit 1
 fi
 ```
@@ -189,4 +189,97 @@ echo "Score: $PASSED/$TOTAL"
 echo ""
 ```
 The "true" case is if the resulting file has the right methodology for the task, which does not output a `FAILURES!!!` line and only shows the runtime and the number of tests. Knowing that, the last line shows the actual number of tests ran in the 4th position, so I created a value `PASSED` which saves that number as the total number of tests. Since this is a 100% in the eyes of the autograder, `PASSED` is also the total score.  
-For a implementation with errors, however, needs a little bit of 
+For a implementation with errors, however, needs a little bit of elbow grease. Same as with the errors.txt file, the last line of text has all the information needed to provide a score, so I made a value for the total number of lines in the .txt file, but amusingly enough the test output with the failures had an extra empty line, so I moved the tail to -2 instead of -1.  
+From the `Tests run: 2,  Failures: 1`, I saw that the total tests was the 11th character and the amount of failures was in the 25th character, so I made values for each accordingly. I subtracted the failures from the total to calculate the grades for passing, then outputted the test output for posterity.  
+
+With this, I started running the "Student Submissions" from the [Week 6 Lab](https://ucsd-cse15l-w23.github.io/week/week6/) to see how my code holds up.  
+
+**Starter from Lab 3**
+```
+$ bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-lab3
+Cloning into 'student-submission'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+Finished cloning
+ListExamples.java found
+
+Test output was:
+JUnit version 4.13.2
+..E
+Time: 0.533
+There was 1 failure:
+1) testMergeRightEnd(TestListExamples)
+org.junit.runners.model.TestTimedOutException: test timed out after 500 milliseconds
+        at java.base@17.0.4.1/java.util.Arrays.copyOf(Arrays.java:3512)
+        at java.base@17.0.4.1/java.util.Arrays.copyOf(Arrays.java:3481)
+        at java.base@17.0.4.1/java.util.ArrayList.add(ArrayList.java:454)
+        at java.base@17.0.4.1/java.util.ArrayList.add(ArrayList.java:467)
+        at app//ListExamples.merge(ListExamples.java:42)
+        at app//TestListExamples.testMergeRightEnd(TestListExamples.java:19)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+Score: 1/2
+```
+Everything looks fine here and with the two methods that I had, the wrong implementation of merge tabulated correctly with a 1/2 score.
+
+**Corrected List Methods**
+```
+$ bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-corrected
+Cloning into 'student-submission'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+Finished cloning
+ListExamples.java found
+
+Score: 2/2
+
+```
+Quick and clean, it was an expected implementation with a perfect score.
+
+**Compiler Error**
+```
+$ bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-compile-error
+Cloning into 'student-submission'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+Finished cloning
+ListExamples.java found
+
+Failure to compile; Total of 1 error
+Error output was:
+ListExamples.java:15: error: ';' expected
+        result.add(0, s)
+                        ^
+1 error
+```
+As expected, it says after ListExamples.java is found that there was a compiler error and it outputted the error.txt file, although maybe I should take out the last line from the txt file as it's a little redundant, but that's a small issue.
+
+**Wrong Filename**
+```
+$ bash grade.sh https://github.com/ucsd-cse15l-f22/list-methods-filename
+Cloning into 'student-submission'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+Finished cloning
+ListExamples.java not found. Is the filetype named properly?
+Score: 0/2
+
+```
+For files with a wrong filename, the output seems within reason, but I realized that the total score for the wrong filename implementation was bruteforced and doesn't accomodate for more methods in `TestListExample`. Maybe there's a way to do it but for now I'll leave it be.  
+
+And with that, I was satisfied with the rudimentary behavior of my grader script. There's still some more nuances to flesh out with more subtle bugs, but for now I can take solace that after bashing (haha) my head at the problem that I found a ramshackle solution.
